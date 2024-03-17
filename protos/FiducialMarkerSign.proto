@@ -1,0 +1,69 @@
+#VRML_SIM R2023b utf8
+# A small sign to show a positional fiducial marker
+
+PROTO FiducialMarkerSign [
+    field SFVec3f       translation         0 0 0
+    field SFRotation    rotation            0 0 1 0
+    field SFString      name                "FiducialMarker"
+    field SFFloat       markerSize          0.100
+    field SFFloat       markerHeight        0.200
+    field SFString      fiducialMarkerFile  "../assets/F00.png"
+    field SFBool        enableCollision     TRUE
+]
+{
+    Solid {
+        name IS name
+        translation IS translation
+        rotation IS rotation
+        children [
+            Pose {
+                translation  0 0 %{=fields.markerHeight.value}%
+                children [
+                    Shape {
+                        appearance Appearance {
+                            material Material { diffuseColor 1 1 1 }
+                            texture ImageTexture {
+                                url [ %{= '"' .. fields.fiducialMarkerFile.value .. '"' }% ]
+                            }
+                        }
+                        geometry Box { size %{=fields.markerSize.value}% 0.005 %{=fields.markerSize.value}% }
+                    }
+                    Solid {
+                        name %{= '"' .. fields.name.value .. 'display' .. '"' }%
+                        boundingObject Box { size %{=fields.markerSize.value}% 0.005 %{=fields.markerSize.value}% }
+                        radarCrossSection 50
+                    }
+
+                ]
+            }
+            Pose {
+                translation %{=fields.markerSize.value / 2}% 0 %{=fields.markerHeight.value / 2}%
+                children [
+                    DEF POST_SHAPE Shape {
+                        appearance Appearance {
+                            material Material {diffuseColor 0 0 0}
+                        }
+                        geometry Box { size 0.010 0.010 %{=fields.markerHeight.value}% }
+                    }
+                    Solid {
+                        name %{= '"' .. fields.name.value .. 'signpostA' .. '"' }%
+                        boundingObject Box { size 0.010 0.010 %{=fields.markerHeight.value}% }
+                        radarCrossSection .1
+                    }
+                ]
+            }
+            Pose {
+                translation %{= -fields.markerSize.value / 2}% 0 %{=fields.markerHeight.value / 2}%
+                children [
+                    USE POST_SHAPE
+                    Solid {
+                        name %{= '"' .. fields.name.value .. 'signpostB' .. '"' }%
+                        boundingObject Box { size 0.010 0.010 %{=fields.markerHeight.value}% }
+                        radarCrossSection .1
+                    }
+                ]
+            }
+        ]
+    }
+}
+

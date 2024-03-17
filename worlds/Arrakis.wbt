@@ -1,0 +1,153 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/buildings/protos/HouseWithGarage.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/StraightRoadSegment.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/garden/protos/DogHouse.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/CurvedRoadSegment.proto"
+EXTERNPROTO "../protos/FiducialMarkerSign.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.2408365025237751 0.12076959137142325 0.9630225775401609 2.4990832750477403
+  position 9.130623038518106 -18.168211794112484 7.042792016450497
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+  size 50 50
+  appearance Parquetry {
+  }
+}
+FiducialMarkerSign {
+  translation -9.24 -8.3 0
+  rotation 0 0 1 1.571
+  name "Fid11"
+  markerHeight 0.1
+  fiducialMarkerFile "../assets/F11.png"
+}
+FiducialMarkerSign {
+  translation -7 -13.5 0
+  name "Fid10"
+  markerHeight 0.1
+  fiducialMarkerFile "../assets/F10.png"
+}
+FiducialMarkerSign {
+  translation -10.32 -13.25 0
+  rotation 0 0 1 1.571
+  name "Fid09"
+  markerHeight 0.1
+  fiducialMarkerFile "../assets/F09.png"
+}
+FiducialMarkerSign {
+  translation -10.34 -11.5 0
+  rotation 0 0 1 1.571
+  name "Fid08"
+  markerHeight 0.1
+  fiducialMarkerFile "../assets/F08.png"
+}
+FiducialMarkerSign {
+  translation -8.4 -8.75 0
+  name "Fid07"
+  fiducialMarkerFile "../assets/F07.png"
+}
+FiducialMarkerSign {
+  translation -6 -8 0
+  name "Fid06"
+  markerHeight 0.1
+  fiducialMarkerFile "../assets/F06.png"
+}
+FiducialMarkerSign {
+  translation -3 -8 0
+  name "Fid05"
+  markerHeight 0.1
+  fiducialMarkerFile "../assets/F05.png"
+}
+FiducialMarkerSign {
+  translation 0 -8 0
+  name "Fid04"
+  markerHeight 0.1
+  fiducialMarkerFile "../assets/F04.png"
+}
+FiducialMarkerSign {
+  translation -8 -1.5 0
+  name "Fid03"
+  markerHeight 0.1
+  fiducialMarkerFile "../assets/F03.png"
+}
+FiducialMarkerSign {
+  translation -6 -1.5 0
+  name "Fid02"
+  markerHeight 0.1
+  fiducialMarkerFile "../assets/F02.png"
+}
+FiducialMarkerSign {
+  translation -3 -1.5 0
+  name "Fid01"
+  markerHeight 0.1
+  fiducialMarkerFile "../assets/F01.png"
+}
+FiducialMarkerSign {
+  translation 0 -1.5 0
+  name "Fid00"
+  markerHeight 0.1
+}
+DogHouse {
+  translation -8.75 -8.3 0
+  name "RobotBase"
+}
+HouseWithGarage {
+  translation -15 -10 0
+}
+StraightRoadSegment {
+  translation 4.5 -25 0.005
+  rotation 0 0 1 1.571
+  name "Street"
+  numberOfLanes 1
+  rightBorder FALSE
+  leftBorder FALSE
+  length 50
+}
+StraightRoadSegment {
+  translation -9 -4.75 0.005
+  name "Driveway"
+  width 6
+  numberOfLanes 1
+  rightBorder FALSE
+  leftBorder FALSE
+}
+CurvedRoadSegment {
+  translation -9.75 -10 0.005
+  rotation 0 0 1 -1.571
+  name "SidewalkToDriveway"
+  width 1.55
+  numberOfLanes 1
+  rightBorder FALSE
+  leftBorder FALSE
+  curvatureRadius 2.4
+}
+StraightRoadSegment {
+  translation -9.8 -12.4 0.005
+  name "MainSidewalk"
+  width 1.55
+  numberOfLanes 1
+  rightBorder FALSE
+  leftBorder FALSE
+  length 11
+}
+StraightRoadSegment {
+  translation -7.35 -10 0.005
+  rotation 0 0 1 1.571
+  name "DrivewaySidewalk"
+  width 1.55
+  numberOfLanes 1
+  rightBorder FALSE
+  leftBorder FALSE
+  length 3
+}
