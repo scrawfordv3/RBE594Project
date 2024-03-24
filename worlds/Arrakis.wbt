@@ -9,12 +9,15 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/garden/protos/DogHouse.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/road/protos/CurvedRoadSegment.proto"
 EXTERNPROTO "../protos/FiducialMarkerSign.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/trees/protos/Cypress.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/trees/protos/Oak.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/trees/protos/Tree.proto"
 
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.15013052603026006 -0.005292439062075874 0.9886520192882082 3.0821124818685397
-  position 8.354955488415847 -9.713905066559049 5.444669949693176
+  orientation -0.21120058730682417 0.04684531715998447 0.976319531803719 2.622246777057286
+  position 34.68991749755016 -24.31488690173297 23.20063047090623
 }
 TexturedBackground {
 }
@@ -26,8 +29,8 @@ Floor {
   }
 }
 Robot {
-  translation -2.999937592453915 -11.46786804819111 -0.00035146788055404055
-  rotation 0.002107706031516569 -0.0021427920316644273 0.9999954829985952 1.5555617081891155
+  translation -2.9650476847424336 -10.760261069121238 -0.0003783943446390714
+  rotation -3.567442988912667e-05 9.927772629997011e-06 0.9999999993143872 1.5211395425750873
   children [
     DEF Body Pose {
       translation 0 0 0.14
@@ -47,7 +50,7 @@ Robot {
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 0.7576801047732993
+        position 10.199642302441758
         axis 0 1 0
         anchor 0 -0.14 0.075
       }
@@ -58,7 +61,7 @@ Robot {
       ]
       endPoint Solid {
         translation 0 -0.14 0.075
-        rotation 0.8714279170796827 0.3468172276827689 -0.346887872253563 1.708187834270681
+        rotation 0.2772557964378693 -0.6793162763600108 0.6794546489751707 2.600773131577133
         children [
           DEF Wheel Shape {
             appearance PBRAppearance {
@@ -74,13 +77,13 @@ Robot {
         boundingObject USE Wheel
         physics DEF StbdWheelPhysics Physics {
         }
-        linearVelocity 0.0009223645331493185 0.11419394646298453 -1.656352883060185e-05
-        angularVelocity -1.5649951889850773 0.011645968780842324 -0.25555639176642453
+        linearVelocity 0.011686754734392658 0.2353242211134239 -0.0006943304574343641
+        angularVelocity -3.1376165674209657 0.15582034055281618 5.459434264318467e-06
       }
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 0.801113699284147
+        position 10.243075748266046
         axis 0 1 0
         anchor 0 0.14 0.075
       }
@@ -90,33 +93,33 @@ Robot {
         }
       ]
       endPoint Solid {
-        translation 8.987044810866278e-06 0.14 0.07499237918457069
-        rotation 0.857951555305239 0.3632253952402371 -0.36329938205548173 1.7236094032925633
+        translation -8.854767618730324e-06 0.14 0.07500777411684105
+        rotation 0.2931724647201533 -0.6759673581088195 0.6761050485695942 2.571340034257131
         children [
           USE Wheel
         ]
         name "PortWheel"
         boundingObject USE Wheel
         physics USE StbdWheelPhysics
-        linearVelocity 0.0015370958097907874 0.18574903364585943 -0.00015485646686038817
-        angularVelocity -3.1357421088514146 0.02371751463663835 -0.25565694991889293
+        linearVelocity 0.011686922332286371 0.23532449664619925 -0.0006969147897412486
+        angularVelocity -3.137616609451334 0.15582034327952796 5.479020673927795e-06
       }
     }
     BallJoint {
       jointParameters BallJointParameters {
-        position 0.14070838768498828
+        position 2.7341821132295747
         anchor 0.131 0 0.0075
       }
       jointParameters2 JointParameters {
-        position -1.643555258693141
+        position -0.3693246625004505
       }
       jointParameters3 JointParameters {
-        position 0.1826983139286025
+        position 35.44069324398641
         axis 0 1 0
       }
       endPoint Solid {
-        translation 0.13108576966082097 -6.011666681793315e-06 0.007632395666039869
-        rotation 0.05267003579978259 0.9976707789142454 0.0433460982037918 1.6529278705217507
+        translation 0.1308307562611759 -1.8815796744231505e-05 0.007656996303367508
+        rotation -0.47675584979308966 -0.4424669980033003 0.7595569862531819 0.34557571463865916
         children [
           DEF FrontCaster Shape {
             appearance PBRAppearance {
@@ -133,25 +136,25 @@ Robot {
         boundingObject USE FrontCaster
         physics Physics {
         }
-        linearVelocity 0.0349160768879658 0.15059323900550317 0.000468907228923908
-        angularVelocity -7.722610801175787 1.790558412158317 0.014853279597827397
+        linearVelocity 0.011677995324170628 0.23535527847985216 0.0013283303591068371
+        angularVelocity -12.069811861965203 0.598849292632265 -0.043994898964386825
       }
     }
     BallJoint {
       jointParameters BallJointParameters {
-        position -0.10243959349148471
+        position -3.022119425458143
         anchor -0.131 0 0.0075
       }
       jointParameters2 JointParameters {
-        position -1.6458229104013191
+        position -0.32844733611934185
       }
       jointParameters3 JointParameters {
-        position -0.17218579568058992
+        position -35.18018969991052
         axis 0 1 0
       }
       endPoint DEF RearCaster Solid {
-        translation -0.13091549923225365 9.502010052120369e-06 0.007646847608742603
-        rotation -0.06410575216151557 0.9975872744190157 -0.026647372422918352 1.6530911365303183
+        translation -0.13118074742473596 3.5126653754602444e-05 0.0076507381673899914
+        rotation -0.2307485054348064 0.43523459753303156 0.8702447772608941 -0.3501683274014775
         children [
           DEF RearCaster Shape {
             appearance PBRAppearance {
@@ -166,8 +169,8 @@ Robot {
         boundingObject USE RearCaster
         physics Physics {
         }
-        linearVelocity -0.03226847815942485 0.15116514325405908 -0.0010615070411483512
-        angularVelocity -7.751908915912113 -1.6547830074921004 -0.015313629280529073
+        linearVelocity 0.011715374129552699 0.23525362433758962 0.0014172044067784796
+        angularVelocity -12.064610196914176 0.600874641573116 0.07525146192330265
       }
     }
     Solid {
@@ -236,8 +239,8 @@ Robot {
   controllerArgs [
     ""
   ]
-  linearVelocity 0.0011282530065347342 0.14957725479340936 -7.197688906834433e-05
-  angularVelocity 0.005753780488598177 -0.00044277685445825684 -0.25553414199461716
+  linearVelocity 0.011678442593009316 0.23531125842241488 -0.0007244234068363457
+  angularVelocity 0.00010385839982741073 -0.00012113317355304953 8.184328506263614e-05
 }
 FiducialMarkerSign {
   translation -9.24 -8.3 0
@@ -347,7 +350,7 @@ CurvedRoadSegment {
   curvatureRadius 2.4
 }
 StraightRoadSegment {
-  translation -9.8 -12.4 0.005
+  translation -10 -12.4 0.005
   name "MainSidewalk"
   width 1.55
   numberOfLanes 1
@@ -364,4 +367,57 @@ StraightRoadSegment {
   rightBorder FALSE
   leftBorder FALSE
   length 3
+}
+Cypress {
+  translation 0 -24 0
+  name "cypress"
+}
+Cypress {
+  translation -2 -24 0
+  name "cypress(1)"
+}
+Cypress {
+  translation -4 -24 0
+  name "cypress(2)"
+}
+Cypress {
+  translation -6 -24 0
+  name "cypress(3)"
+}
+Cypress {
+  translation -8 -24 0
+  name "cypress(4)"
+}
+Cypress {
+  translation -10 -24 0
+  name "cypress(5)"
+}
+Cypress {
+  translation -12 -24 0
+  name "cypress(6)"
+}
+Cypress {
+  translation -14 -24 0
+  name "cypress(7)"
+}
+Cypress {
+  translation -16 -24 0
+  name "cypress(8)"
+}
+Oak {
+  translation -4 3 0
+}
+Tree {
+  translation -2 -18 0
+  scale 3 3 12
+}
+Tree {
+  translation -13 4 0
+  name "tree(1)"
+  scale 3 3 12
+}
+Tree {
+  translation -2 17 0
+  name "tree(2)"
+  scale 3 3 12
 }
