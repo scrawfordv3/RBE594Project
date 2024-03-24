@@ -13,8 +13,8 @@ EXTERNPROTO "../protos/FiducialMarkerSign.proto"
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.07623155792724166 0.033322056056604155 0.9965331856772991 2.0460909916005288
-  position -1.5424593834206024 -14.095499993827273 2.022346019965736
+  orientation -0.15094733644233563 0.0075176991176488924 0.9885132198513792 2.914051104347824
+  position 3.2444172335444215 -11.136211342279651 3.8567593152667907
 }
 TexturedBackground {
 }
@@ -26,7 +26,8 @@ Floor {
   }
 }
 Robot {
-  translation -5 -8.3 0
+  translation -2.999937592453915 -11.46786804819111 -0.00035146788055404055
+  rotation 0.002107706031516569 -0.0021427920316644273 0.9999954829985952 1.5555617081891155
   children [
     DEF Body Pose {
       translation 0 0 0.14
@@ -46,7 +47,7 @@ Robot {
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 0.25512886121990136
+        position 0.7576801047732993
         axis 0 1 0
         anchor 0 -0.14 0.075
       }
@@ -57,7 +58,7 @@ Robot {
       ]
       endPoint Solid {
         translation 0 -0.14 0.075
-        rotation 0.9839474590393863 0.12617628816141677 -0.1262019895078612 1.5871820453543886
+        rotation 0.8714279170796827 0.3468172276827689 -0.346887872253563 1.708187834270681
         children [
           DEF Wheel Shape {
             appearance PBRAppearance {
@@ -73,11 +74,13 @@ Robot {
         boundingObject USE Wheel
         physics DEF StbdWheelPhysics Physics {
         }
+        linearVelocity 0.0009223645331493185 0.11419394646298453 -1.656352883060185e-05
+        angularVelocity -1.5649951889850773 0.011645968780842324 -0.25555639176642453
       }
     }
     HingeJoint {
       jointParameters HingeJointParameters {
-        position 0.0977947375018185
+        position 0.801113699284147
         axis 0 1 0
         anchor 0 0.14 0.075
       }
@@ -87,27 +90,33 @@ Robot {
         }
       ]
       endPoint Solid {
-        translation 1.17832e-05 0.14 0.075
-        rotation 0.997614283411043 0.04880968592618164 -0.048819628163872336 1.5733885640433374
+        translation 8.987044810866278e-06 0.14 0.07499237918457069
+        rotation 0.857951555305239 0.3632253952402371 -0.36329938205548173 1.7236094032925633
         children [
           USE Wheel
         ]
         name "PortWheel"
         boundingObject USE Wheel
         physics USE StbdWheelPhysics
+        linearVelocity 0.0015370958097907874 0.18574903364585943 -0.00015485646686038817
+        angularVelocity -3.1357421088514146 0.02371751463663835 -0.25565694991889293
       }
     }
     BallJoint {
       jointParameters BallJointParameters {
+        position 0.14070838768498828
         anchor 0.131 0 0.0075
       }
       jointParameters2 JointParameters {
+        position -1.643555258693141
       }
       jointParameters3 JointParameters {
+        position 0.1826983139286025
         axis 0 1 0
       }
       endPoint Solid {
-        translation 0.131 0 0.0075
+        translation 0.13108576966082097 -6.011666681793315e-06 0.007632395666039869
+        rotation 0.05267003579978259 0.9976707789142454 0.0433460982037918 1.6529278705217507
         children [
           DEF FrontCaster Shape {
             appearance PBRAppearance {
@@ -124,19 +133,25 @@ Robot {
         boundingObject USE FrontCaster
         physics Physics {
         }
+        linearVelocity 0.0349160768879658 0.15059323900550317 0.000468907228923908
+        angularVelocity -7.722610801175787 1.790558412158317 0.014853279597827397
       }
     }
     BallJoint {
       jointParameters BallJointParameters {
+        position -0.10243959349148471
         anchor -0.131 0 0.0075
       }
       jointParameters2 JointParameters {
+        position -1.6458229104013191
       }
       jointParameters3 JointParameters {
+        position -0.17218579568058992
         axis 0 1 0
       }
       endPoint DEF RearCaster Solid {
-        translation -0.131 0 0.0075
+        translation -0.13091549923225365 9.502010052120369e-06 0.007646847608742603
+        rotation -0.06410575216151557 0.9975872744190157 -0.026647372422918352 1.6530911365303183
         children [
           DEF RearCaster Shape {
             appearance PBRAppearance {
@@ -151,6 +166,8 @@ Robot {
         boundingObject USE RearCaster
         physics Physics {
         }
+        linearVelocity -0.03226847815942485 0.15116514325405908 -0.0010615070411483512
+        angularVelocity -7.751908915912113 -1.6547830074921004 -0.015313629280529073
       }
     }
     Solid {
@@ -193,11 +210,20 @@ Robot {
       translation 0.14 0 0.25
       name "D435"
     }
+    InertialUnit {
+      name "attitude"
+      resolution 0.0175
+    }
+    Gyro {
+      resolution 0.0175
+    }
   ]
   boundingObject USE Body
   physics Physics {
   }
   controller "testingController"
+  linearVelocity 0.0011282530065347342 0.14957725479340936 -7.197688906834433e-05
+  angularVelocity 0.005753780488598177 -0.00044277685445825684 -0.25553414199461716
 }
 FiducialMarkerSign {
   translation -9.24 -8.3 0
