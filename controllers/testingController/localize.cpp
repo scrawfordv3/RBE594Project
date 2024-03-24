@@ -1,58 +1,49 @@
-#include <cstring>
 #include <iostream>
 #include <webots/Robot.hpp>
 #include <webots/GPS.hpp>
 #include <webots/InertialUnit.hpp>
 #include <webots/Gyro.hpp>
-#include <webots/utils/AnsiCodes.hpp>
+#include <opencv2/core/core.hpp>
+#include <opencv2/imgproc/imgproc.hpp>
 #include "common.hpp"
 
 void localize(webots::Robot *robot, double *pose){
   static int                   timeStep = (int)robot->getBasicTimeStep();
-  static double                initialGpsLocation[2];
   static double                initialYaw;
   static bool                  initialPoseCaptured = false;
-  static webots::GPS          *gpsDevice = robot->getGPS("GPSDevice");
   static webots::Gyro         *gyroDevice = robot->getGyro("gyro");
   static webots::InertialUnit *inertiaDevice = robot->getInertialUnit("attitude");
-  double                       position[3];
-  double                       rates[3];
+  double                       yaw = 0.0;
+  double                       yawRate = 0.0;
 
-  gpsDevice->enable(timeStep);
+  double  poseByGPS[4];
+  double  poseByCamera[4];
+  
+  
   gyroDevice->enable(timeStep);
   inertiaDevice->enable(timeStep);
 
 
- 
-  const double *gpsData = gpsDevice->getValues();
-
+  localizeViaGPS(robot, poseByGPS);
+  localizeViaCamera(robot, poseByCamera);
+std::cout << "\t\t\t\t\t\t\t\tCamera X: " << poseByCamera[0] << "\tCamera Y: " << std::endl;  
   if (initialPoseCaptured) {
-    position[0] = gpsData[0] - initialGpsLocation[0];
-    position[1] = gpsData[1] - initialGpsLocation[1];
-    position[2] = (inertiaDevice->getRollPitchYaw())[2] - initialYaw;
-
-    gpsData = gpsDevice->getSpeedVector();
-    rates[0] = gpsData[0];
-    rates[1] = gpsData[1];
-    rates[2] = gyroDevice->getValues()[2];
+    yaw = (inertiaDevice->getRollPitchYaw())[2] - initialYaw;
+    yawRate = gyroDevice->getValues()[2];
   } else {
-    robot->step(timeStep);
-    initialGpsLocation[0] = gpsData[0];
-    initialGpsLocation[1] = gpsData[1];
     initialYaw = (inertiaDevice->getRollPitchYaw())[2];
-
-    position[0] = 0.0;
-    position[1] = 0.0;
-    position[2] = 0.0;
-    rates[0] = 0.0;
-    rates[1] = 0.0;
-    rates[2] = 0.0;
+    yaw = 0.0;
+    yawRate = 0.0;  
     
     initialPoseCaptured = true;
   }
 
-  memcpy(pose, position, sizeof(position));
-  memcpy(pose+3, rates, sizeof(rates));
+  pose[0] = poseByGPS[0];       // Relative X to 'Home'
+  pose[1] = poseByGPS[1];       // Relative Y to 'Home;
+  pose[2] = yaw - initialYaw;   // Relative Yaw angle from rest at 'Home;
+  pose[3] = poseByGPS[2];       // Velocity in the X axis;
+  pose[4] = poseByGPS[3];       // Velocity in the Y axis;
+  pose[5] = yawRate;            // Yaw rate
 
   return;
 }

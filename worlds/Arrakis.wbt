@@ -206,9 +206,19 @@ Robot {
       ]
       name "CameraHousing"
     }
+    Camera {
+      translation 0.14 0 0.25
+      name "D435RGB"
+      width 1920
+      height 1080
+    }
     RangeFinder {
       translation 0.14 0 0.25
-      name "D435"
+      name "D435RangeFinder"
+      width 1280
+      height 720
+      minRange 0.025
+      maxRange 10
     }
     InertialUnit {
       name "attitude"
