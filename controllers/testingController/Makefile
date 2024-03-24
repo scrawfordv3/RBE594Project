@@ -40,6 +40,7 @@
 ### ---- C++ Sources ----
 ### if your program uses several C++ source files:
 ### CXX_SOURCES = my_plugin.cc my_clever_algo.cpp my_graphics.c++
+CXX_SOURCES = testingController.cpp localize.cpp gps.cpp camera.cpp
 ###
 ### ---- Compilation options ----
 ### if special compilation flags are necessary:
@@ -49,6 +50,8 @@
 ### if your program needs additional libraries:
 ### INCLUDE = -I"/my_library_path/include"
 ### LIBRARIES = -L"/path/to/my/library" -lmy_library -lmy_other_library
+INCLUDE = -I$(OPENCV_DIR)/include/opencv4
+LIBRARIES = -L"$(OPENCV_DIR)/lib" -lopencv_core -lopencv_imgproc
 ###
 ### ---- Linking options ----
 ### if special linking flags are needed:

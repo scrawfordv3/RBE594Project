@@ -13,8 +13,8 @@ EXTERNPROTO "../protos/FiducialMarkerSign.proto"
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.2408365025237751 0.12076959137142325 0.9630225775401609 2.4990832750477403
-  position 9.130623038518106 -18.168211794112484 7.042792016450497
+  orientation -0.15013052603026006 -0.005292439062075874 0.9886520192882082 3.0821124818685397
+  position 8.354955488415847 -9.713905066559049 5.444669949693176
 }
 TexturedBackground {
 }
@@ -24,6 +24,219 @@ Floor {
   size 50 50
   appearance Parquetry {
   }
+}
+Robot {
+  translation -2.999937592453915 -11.46786804819111 -0.00035146788055404055
+  rotation 0.002107706031516569 -0.0021427920316644273 0.9999954829985952 1.5555617081891155
+  children [
+    DEF Body Pose {
+      translation 0 0 0.14
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.666667 1 0
+            roughness 1
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.25
+            radius 0.14
+          }
+        }
+      ]
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 0.7576801047732993
+        axis 0 1 0
+        anchor 0 -0.14 0.075
+      }
+      device [
+        RotationalMotor {
+          name "StbdMotor"
+        }
+      ]
+      endPoint Solid {
+        translation 0 -0.14 0.075
+        rotation 0.8714279170796827 0.3468172276827689 -0.346887872253563 1.708187834270681
+        children [
+          DEF Wheel Shape {
+            appearance PBRAppearance {
+              baseColor 1 0 0
+            }
+            geometry Cylinder {
+              height 0.025
+              radius 0.075
+            }
+          }
+        ]
+        name "StbdWheel"
+        boundingObject USE Wheel
+        physics DEF StbdWheelPhysics Physics {
+        }
+        linearVelocity 0.0009223645331493185 0.11419394646298453 -1.656352883060185e-05
+        angularVelocity -1.5649951889850773 0.011645968780842324 -0.25555639176642453
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 0.801113699284147
+        axis 0 1 0
+        anchor 0 0.14 0.075
+      }
+      device [
+        RotationalMotor {
+          name "PortMotor"
+        }
+      ]
+      endPoint Solid {
+        translation 8.987044810866278e-06 0.14 0.07499237918457069
+        rotation 0.857951555305239 0.3632253952402371 -0.36329938205548173 1.7236094032925633
+        children [
+          USE Wheel
+        ]
+        name "PortWheel"
+        boundingObject USE Wheel
+        physics USE StbdWheelPhysics
+        linearVelocity 0.0015370958097907874 0.18574903364585943 -0.00015485646686038817
+        angularVelocity -3.1357421088514146 0.02371751463663835 -0.25565694991889293
+      }
+    }
+    BallJoint {
+      jointParameters BallJointParameters {
+        position 0.14070838768498828
+        anchor 0.131 0 0.0075
+      }
+      jointParameters2 JointParameters {
+        position -1.643555258693141
+      }
+      jointParameters3 JointParameters {
+        position 0.1826983139286025
+        axis 0 1 0
+      }
+      endPoint Solid {
+        translation 0.13108576966082097 -6.011666681793315e-06 0.007632395666039869
+        rotation 0.05267003579978259 0.9976707789142454 0.0433460982037918 1.6529278705217507
+        children [
+          DEF FrontCaster Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+              roughness 1
+              metalness 0
+            }
+            geometry Sphere {
+              radius 0.0195
+            }
+          }
+        ]
+        name "FrontCaster"
+        boundingObject USE FrontCaster
+        physics Physics {
+        }
+        linearVelocity 0.0349160768879658 0.15059323900550317 0.000468907228923908
+        angularVelocity -7.722610801175787 1.790558412158317 0.014853279597827397
+      }
+    }
+    BallJoint {
+      jointParameters BallJointParameters {
+        position -0.10243959349148471
+        anchor -0.131 0 0.0075
+      }
+      jointParameters2 JointParameters {
+        position -1.6458229104013191
+      }
+      jointParameters3 JointParameters {
+        position -0.17218579568058992
+        axis 0 1 0
+      }
+      endPoint DEF RearCaster Solid {
+        translation -0.13091549923225365 9.502010052120369e-06 0.007646847608742603
+        rotation -0.06410575216151557 0.9975872744190157 -0.026647372422918352 1.6530911365303183
+        children [
+          DEF RearCaster Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+            }
+            geometry Sphere {
+              radius 0.0195
+            }
+          }
+        ]
+        name "RearCaster"
+        boundingObject USE RearCaster
+        physics Physics {
+        }
+        linearVelocity -0.03226847815942485 0.15116514325405908 -0.0010615070411483512
+        angularVelocity -7.751908915912113 -1.6547830074921004 -0.015313629280529073
+      }
+    }
+    Solid {
+      translation 0 0 0.275
+      children [
+        DEF GPSHousing Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+          }
+          geometry Cylinder {
+            height 0.025
+            radius 0.05
+          }
+        }
+      ]
+      name "GPSHousing"
+      boundingObject USE GPSHousing
+      physics Physics {
+      }
+    }
+    GPS {
+      translation 0 0 0.275
+      name "GPSDevice"
+    }
+    Solid {
+      translation 0.13 0 0.25
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.752941 0.752941 0.752941
+          }
+          geometry Box {
+            size 0.025 0.05 0.025
+          }
+        }
+      ]
+      name "CameraHousing"
+    }
+    Camera {
+      translation 0.14 0 0.25
+      name "D435RGB"
+      width 1920
+      height 1080
+    }
+    RangeFinder {
+      translation 0.14 0 0.25
+      name "D435RangeFinder"
+      width 1280
+      height 720
+      minRange 0.025
+      maxRange 10
+    }
+    InertialUnit {
+      name "attitude"
+      resolution 0.0175
+    }
+    Gyro {
+      resolution 0.0175
+    }
+  ]
+  boundingObject USE Body
+  physics Physics {
+  }
+  controller "testingController"
+  controllerArgs [
+    ""
+  ]
+  linearVelocity 0.0011282530065347342 0.14957725479340936 -7.197688906834433e-05
+  angularVelocity 0.005753780488598177 -0.00044277685445825684 -0.25553414199461716
 }
 FiducialMarkerSign {
   translation -9.24 -8.3 0
