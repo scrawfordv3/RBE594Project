@@ -13,8 +13,8 @@ EXTERNPROTO "../protos/FiducialMarkerSign.proto"
 WorldInfo {
 }
 Viewpoint {
-  orientation -0.2408365025237751 0.12076959137142325 0.9630225775401609 2.4990832750477403
-  position 9.130623038518106 -18.168211794112484 7.042792016450497
+  orientation -0.07623155792724166 0.033322056056604155 0.9965331856772991 2.0460909916005288
+  position -1.5424593834206024 -14.095499993827273 2.022346019965736
 }
 TexturedBackground {
 }
@@ -24,6 +24,180 @@ Floor {
   size 50 50
   appearance Parquetry {
   }
+}
+Robot {
+  translation -5 -8.3 0
+  children [
+    DEF Body Pose {
+      translation 0 0 0.14
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.666667 1 0
+            roughness 1
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.25
+            radius 0.14
+          }
+        }
+      ]
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 0.25512886121990136
+        axis 0 1 0
+        anchor 0 -0.14 0.075
+      }
+      device [
+        RotationalMotor {
+          name "StbdMotor"
+        }
+      ]
+      endPoint Solid {
+        translation 0 -0.14 0.075
+        rotation 0.9839474590393863 0.12617628816141677 -0.1262019895078612 1.5871820453543886
+        children [
+          DEF Wheel Shape {
+            appearance PBRAppearance {
+              baseColor 1 0 0
+            }
+            geometry Cylinder {
+              height 0.025
+              radius 0.075
+            }
+          }
+        ]
+        name "StbdWheel"
+        boundingObject USE Wheel
+        physics DEF StbdWheelPhysics Physics {
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 0.0977947375018185
+        axis 0 1 0
+        anchor 0 0.14 0.075
+      }
+      device [
+        RotationalMotor {
+          name "PortMotor"
+        }
+      ]
+      endPoint Solid {
+        translation 1.17832e-05 0.14 0.075
+        rotation 0.997614283411043 0.04880968592618164 -0.048819628163872336 1.5733885640433374
+        children [
+          USE Wheel
+        ]
+        name "PortWheel"
+        boundingObject USE Wheel
+        physics USE StbdWheelPhysics
+      }
+    }
+    BallJoint {
+      jointParameters BallJointParameters {
+        anchor 0.131 0 0.0075
+      }
+      jointParameters2 JointParameters {
+      }
+      jointParameters3 JointParameters {
+        axis 0 1 0
+      }
+      endPoint Solid {
+        translation 0.131 0 0.0075
+        children [
+          DEF FrontCaster Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+              roughness 1
+              metalness 0
+            }
+            geometry Sphere {
+              radius 0.0195
+            }
+          }
+        ]
+        name "FrontCaster"
+        boundingObject USE FrontCaster
+        physics Physics {
+        }
+      }
+    }
+    BallJoint {
+      jointParameters BallJointParameters {
+        anchor -0.131 0 0.0075
+      }
+      jointParameters2 JointParameters {
+      }
+      jointParameters3 JointParameters {
+        axis 0 1 0
+      }
+      endPoint DEF RearCaster Solid {
+        translation -0.131 0 0.0075
+        children [
+          DEF RearCaster Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 0
+            }
+            geometry Sphere {
+              radius 0.0195
+            }
+          }
+        ]
+        name "RearCaster"
+        boundingObject USE RearCaster
+        physics Physics {
+        }
+      }
+    }
+    Solid {
+      translation 0 0 0.275
+      children [
+        DEF GPSHousing Shape {
+          appearance PBRAppearance {
+            baseColor 0 0 0
+          }
+          geometry Cylinder {
+            height 0.025
+            radius 0.05
+          }
+        }
+      ]
+      name "GPSHousing"
+      boundingObject USE GPSHousing
+      physics Physics {
+      }
+    }
+    GPS {
+      translation 0 0 0.275
+      name "GPSDevice"
+    }
+    Solid {
+      translation 0.13 0 0.25
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.752941 0.752941 0.752941
+          }
+          geometry Box {
+            size 0.025 0.05 0.025
+          }
+        }
+      ]
+      name "CameraHousing"
+    }
+    RangeFinder {
+      translation 0.14 0 0.25
+      name "D435"
+    }
+  ]
+  boundingObject USE Body
+  physics Physics {
+  }
+  controller "testingController"
 }
 FiducialMarkerSign {
   translation -9.24 -8.3 0
