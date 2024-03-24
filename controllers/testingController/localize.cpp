@@ -7,7 +7,7 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include "common.hpp"
 
-void localize(webots::Robot *robot, double *pose){
+void localize(webots::Robot *robot, double *pose, unsigned char *imageBuffer){
   static int                   timeStep = (int)robot->getBasicTimeStep();
   static double                initialYaw;
   static bool                  initialPoseCaptured = false;
@@ -25,8 +25,9 @@ void localize(webots::Robot *robot, double *pose){
 
 
   localizeViaGPS(robot, poseByGPS);
-  localizeViaCamera(robot, poseByCamera);
-std::cout << "\t\t\t\t\t\t\t\tCamera X: " << poseByCamera[0] << "\tCamera Y: " << std::endl;  
+  localizeViaCamera(robot, poseByCamera, imageBuffer);
+std::cout << "\t\t\t\t\t\t\t\tCamera X: " << poseByCamera[0] << "\tCamera Y: " << poseByCamera[2] << std::endl; 
+
   if (initialPoseCaptured) {
     yaw = (inertiaDevice->getRollPitchYaw())[2] - initialYaw;
     yawRate = gyroDevice->getValues()[2];
