@@ -1,0 +1,30 @@
+#VRML_SIM R2023b utf8
+# Describe the functionality of your PROTO here.
+
+
+PROTO D435RGB [
+  field SFVec3f translation 0 0 0
+  field SFRotation rotation 0 0 1 0
+  field SFString name "D435RGB"
+]
+
+{
+    Camera {
+      translation IS translation
+      rotation IS rotation
+      children [
+        DEF D435RGB_SHAPE Shape {
+          appearance DEF D435RGB_APPEARANCE PBRAppearance {
+            baseColor 0.1 0.1 0.1
+            metalness 0.25
+          }
+          geometry DEF D435RGB_GEOMETRY Box {
+            size 0.025 0.09 0.025
+          }
+        }
+      ]
+      name IS name
+      width 1920
+      height 1080
+    }
+}
