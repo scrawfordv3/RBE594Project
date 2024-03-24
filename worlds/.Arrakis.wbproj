@@ -8,4 +8,4 @@ orthographicViewHeight: 1
 textFiles: -1
 globalOptionalRendering: CameraFrustums
 consoles: Console:All:All
-renderingDevicePerspectives: robot:D435;1;0.240741;0;0
+renderingDevicePerspectives: robot:D435;1;0.5;0;0
