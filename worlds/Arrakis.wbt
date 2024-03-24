@@ -228,6 +228,7 @@ Robot {
       resolution 0.0175
     }
   ]
+  name "StephensTestBot"
   boundingObject USE Body
   physics Physics {
   }
