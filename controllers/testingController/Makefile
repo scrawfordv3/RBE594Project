@@ -40,6 +40,7 @@
 ### ---- C++ Sources ----
 ### if your program uses several C++ source files:
 ### CXX_SOURCES = my_plugin.cc my_clever_algo.cpp my_graphics.c++
+CXX_SOURCES = testingController.cpp localize.cpp
 ###
 ### ---- Compilation options ----
 ### if special compilation flags are necessary:
